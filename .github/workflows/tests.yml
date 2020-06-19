@@ -245,6 +245,7 @@ jobs:
             ~/.cargo/registry
             ~/.cargo/git
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+      - run: sudo apt-get update && sudo apt-get install libssl-dev
       - run: nix-shell --run "echo 'Env installing...'"
       - run: nix-shell --run "bash scripts/environment/prepare.sh"
       - run: nix-shell --run "make slim-builds"
